@@ -1,6 +1,12 @@
 from fastapi import FastAPI
 from fastapi.params import Body
+
 media = FastAPI()
+
+#   Modifying the schema (Properties allowed in the API) using schema
+class Media(BaseModel):
+    title:str
+    content:str
 
 # PATH OPERATION
 @media.get("/") #decorator
@@ -17,4 +23,6 @@ def add_posts(payload : dict = Body(...)):     #payload: Variable that stores th
     print(payload)
     return{"Message":"Successfully created.", "Post": payload}
     
+# Using Pydantic to format the schema
+# Info: Title str, Content str
     
